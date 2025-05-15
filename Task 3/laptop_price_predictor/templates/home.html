@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laptop Price Predictor</title>
+    <style>	
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("/static/laptop.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 50px;
+            text-align: center;
+            background-color: #000;
+            color: white;
+	    background-size: 99% 99%;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* dark semi-transparent background */
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        h1, h2 {
+            color: white;
+        }
+
+        .form-columns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: white;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Laptop Price Predictor</h1>
+        <form method="POST">
+    <div class="form-columns">
+        <!-- Left Column -->
+        <div class="column">
+            <label>RAM:</label>
+            <select name="ram">
+                <option value="1" {% if selected.ram == '1' %}selected{% endif %}>8GB</option>
+                <option value="2" {% if selected.ram == '2' %}selected{% endif %}>12GB</option>
+                <option value="3" {% if selected.ram == '3' %}selected{% endif %}>16GB</option>
+            </select>
+
+            <label>Processor:</label>
+            <select name="processor">
+                <option value="1" {% if selected.processor == '1' %}selected{% endif %}>i3</option>
+                <option value="2" {% if selected.processor == '2' %}selected{% endif %}>i5</option>
+                <option value="3" {% if selected.processor == '3' %}selected{% endif %}>i7</option>
+                <option value="4" {% if selected.processor == '4' %}selected{% endif %}>i9</option>
+            </select>
+
+            <label>Brand:</label>
+            <select name="brand">
+                <option value="1" {% if selected.brand == '1' %}selected{% endif %}>Acer</option>
+                <option value="2" {% if selected.brand == '2' %}selected{% endif %}>Asus</option>
+                <option value="3" {% if selected.brand == '3' %}selected{% endif %}>Dell</option>
+                <option value="4" {% if selected.brand == '4' %}selected{% endif %}>HP</option>
+                <option value="5" {% if selected.brand == '5' %}selected{% endif %}>Lenovo</option>
+            </select>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+            <label>Display:</label>
+            <select name="display">
+                <option value="1" {% if selected.display == '1' %}selected{% endif %}>14"</option>
+                <option value="2" {% if selected.display == '2' %}selected{% endif %}>15.6"</option>
+            </select>
+
+            <label>SSD:</label>
+            <select name="ssd">
+                <option value="1" {% if selected.ssd == '1' %}selected{% endif %}>1TB</option>
+                <option value="2" {% if selected.ssd == '2' %}selected{% endif %}>512GB</option>
+            </select>
+
+            <label>GPU:</label>
+            <select name="gpu">
+                <option value="1" {% if selected.gpu == '1' %}selected{% endif %}>None</option>
+                <option value="2" {% if selected.gpu == '2' %}selected{% endif %}>RTX 3040</option>
+                <option value="3" {% if selected.gpu == '3' %}selected{% endif %}>RTX 3060</option>
+            </select>
+        </div>
+    </div>
+
+    <input type="submit" value="Predict Price"/>
+</form>
+
+	<h2>{{ msg }}</h2>
+
+    </div>
+</body>
+</html>
